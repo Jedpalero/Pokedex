@@ -26,3 +26,14 @@ export type abilities = {
     name: string;
   };
 };
+
+export type statsProps = {
+  base_stat: string;
+  stat: {
+    name: string;
+  };
+};
+
+export type EvolutionProps = {
+  idChain: string;
+}

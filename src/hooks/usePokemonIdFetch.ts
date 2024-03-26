@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 const fetchPokemon = async (ids: string | undefined) => {
-  const res = await fetch(`https://pokeapi.co/api/v2/type/${ids}`);
+  const res = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${ids}`);
   const result = await res.json();
   return await result;
 };
