@@ -27,17 +27,15 @@ const PokemonDetails = () => {
   const description: string =
     PokemonSpecies?.flavor_text_entries[3].flavor_text;
   const moves = PokemonResult?.abilities;
-  const habitat = PokemonSpecies?.habitat.name;
+  const habitat = PokemonSpecies?.habitat?.name;
   const habitats = habitat?.charAt(0).toUpperCase() + habitat?.slice(1);
   const stats = PokemonResult?.stats;
   const idChain = PokemonSpecies?.evolution_chain.url;
 
-  // const weaknesses = PokemonId?.damage_relations.double_damage_from;
-
   return (
     <>
-      <div className="md:grid grid-cols-2">
-        <div className="p-3 ">
+      <div className="lg:grid lg:grid-cols-2 ">
+        <div className="p-3 m-auto">
           <h1 className="flex gap-4 justify-center">
             {names?.toUpperCase()} <span className="text-slate-700">#{id}</span>
           </h1>
@@ -47,10 +45,10 @@ const PokemonDetails = () => {
             className="size-[30rem] m-auto"
           />
         </div>
-        <div className="space-y-6">
-          <p className="text-xl w-[30rem]">{description}</p>
+        <div className="space-y-6 w-[40rem] m-auto">
+          <p className="text-xl">{description}</p>
           <div
-            className="border h-[15rem] w-[30rem] rounded-xl p-7 text-white text-xl flex flex-wrap flex-col"
+            className="border h-[15rem] rounded-xl p-7 text-white text-xl flex flex-wrap flex-col"
             style={{ backgroundColor: backgroundColors[types] }}
           >
             <span>
@@ -69,7 +67,9 @@ const PokemonDetails = () => {
             </span>
             <span>
               <h4>HABITAT</h4>
-              <h4 className="text-black">{habitats.toString()}</h4>
+              <h4 className="text-black">
+                {habitats ? habitats.toString() : "Unknown"}
+              </h4>
             </span>
             <span>
               <h4>ABILITIESS</h4>
@@ -98,7 +98,7 @@ const PokemonDetails = () => {
           </div>
           <div className="space-y-2">
             {stats?.map((item: statsProps, index: number) => (
-              <div key={index} className="flex items-center gap-3 w-[30rem]">
+              <div key={index} className="flex items-center gap-3">
                 <span className="text-gray-700">
                   {item.stat.name?.toUpperCase()}
                 </span>

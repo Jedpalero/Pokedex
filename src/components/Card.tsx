@@ -13,7 +13,6 @@ const Card = ({ name, url }: CardType) => {
 
   const { data } = usePokemonFetch(name);
 
-  // const types = data?.types[0].type.name;
   return (
     <>
       <Link to={`/${name}`}>

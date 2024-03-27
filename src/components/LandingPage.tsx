@@ -3,6 +3,7 @@ import "../index.css";
 import { RootObject } from "../shared/pokemon.type";
 import Card from "./Card";
 import { useQuery } from "@tanstack/react-query";
+import Loader from "./Loader";
 
 const fetchPokemonData = async (offset: number) => {
   const res = await fetch(
@@ -26,7 +27,7 @@ const LandingPage = () => {
     <>
       <div className="flex flex-wrap justify-center gap-4">
         {isLoading ? (
-          "Loading"
+          <Loader />
         ) : (
           <>
             {names?.map((pokemon) => (

@@ -28,11 +28,65 @@ h1 {
   @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
 }
 h2 {
-  @apply scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0 w-[30rem];
+  @apply scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0 w-full;
 }
 
 button {
-  @apply border p-3 w-[10rem] rounded-md disabled:bg-slate-300 bg-slate-700 text-white font-bold hover:bg-slate-900  transition ease-in;
+  @apply relative border p-3 w-[10rem] rounded-md disabled:bg-slate-300 bg-slate-700 text-white font-bold hover:bg-slate-900 transition ease-in;
+}
+
+.evolutionClip {
+  @apply rounded-full border-spacing-10 flex flex-col m-auto;
+}
+
+.nameClip {
+  @apply text-center text-lg font-semibold;
+}
+
+.imageClip {
+  @apply hover:scale-110 transition ease-in-out;
+}
+
+.loader {
+  height: 100px;
+  aspect-ratio: 1;
+  position: relative;
+  margin: 150px;
+}
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transform-origin: bottom;
+}
+.loader::after {
+  background: radial-gradient(at 75% 15%, #fffb, #0000 35%),
+    radial-gradient(at 80% 40%, #0000, #0008),
+    radial-gradient(circle 14px, #fff 94%, #0000),
+    radial-gradient(circle 22px, #000 94%, #0000),
+    linear-gradient(#f93318 0 0) top / 100% calc(50% - 8px),
+    linear-gradient(#fff 0 0) bottom/100% calc(50% - 8px) #000;
+  background-repeat: no-repeat;
+  animation: l20 1s infinite cubic-bezier(0.5, 120, 0.5, -120);
+}
+.loader::before {
+  background: #ddd;
+  filter: blur(8px);
+  transform: scaleY(0.4) translate(-13px, 0px);
+}
+@keyframes l20 {
+  30%,
+  70% {
+    transform: rotate(0deg);
+  }
+  49.99% {
+    transform: rotate(0.2deg);
+  }
+  50% {
+    transform: rotate(-0.2deg);
+  }
 }
 
 @layer utilities {
