@@ -29,7 +29,7 @@ const Evolution = ({ idChain }: EvolutionProps) => {
     <>
       {evolve2 || evolve3 ? (
         <>
-          <div className="flex flex-col justify-center items-center mt-[5rem] bg-slate-700 text-white w-[90rem] m-auto rounded-bl-3xl rounded-tr-3xl">
+          <div className="flex flex-col justify-center items-center mt-[5rem] bg-slate-700 text-white md:w-[90rem] m-auto rounded-bl-3xl rounded-tr-3xl">
             <h2 className="text-center p-3">Evolutions</h2>
             <div className="flex gap-3 mt-5">
               {evolve1 ? (
@@ -44,7 +44,7 @@ const Evolution = ({ idChain }: EvolutionProps) => {
               ) : null}
               {evolve2 ? (
                 <>
-                  <FaGreaterThan className="m-auto size-10" />
+                  <FaGreaterThan className="m-auto md:size-10" />
                   <Link to={`/${name2}`} className="evolutionClip">
                     <h3 className="nameClip">{name2.toUpperCase()}</h3>
                     <img
@@ -57,7 +57,7 @@ const Evolution = ({ idChain }: EvolutionProps) => {
               ) : null}
               {evolve3 ? (
                 <>
-                  <FaGreaterThan className="m-auto size-10" />
+                  <FaGreaterThan className="m-auto md:size-10" />
                   <Link to={`/${name3}`} className="evolutionClip">
                     <h3 className="nameClip">{name3.toUpperCase()}</h3>
                     <img

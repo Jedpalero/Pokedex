@@ -40,18 +40,20 @@ button {
 }
 
 .nameClip {
-  @apply text-center text-lg font-semibold;
+  @apply text-center md:text-lg text-xs font-semibold;
 }
 
 .imageClip {
-  @apply hover:scale-110 transition ease-in-out;
+  @apply md:size-[10rem] size-[4rem] hover:scale-110 transition ease-in-out;
 }
 
 .loader {
   height: 100px;
   aspect-ratio: 1;
   position: relative;
-  margin: 150px;
+  margin: auto;
+  margin-top: 15rem;
+  margin-bottom: 4rem;
 }
 .loader::before,
 .loader::after {

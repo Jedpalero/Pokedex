@@ -4,6 +4,7 @@ import { RootObject } from "../shared/pokemon.type";
 import Card from "./Card";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "./Loader";
+import ErrorNotFound from "./ErrorNotFound";
 
 const fetchPokemonData = async (offset: number) => {
   const res = await fetch(
@@ -16,7 +17,11 @@ const fetchPokemonData = async (offset: number) => {
 const LandingPage = () => {
   const [offset, setOffset] = useState(0);
 
-  const { data: pokemon, isLoading } = useQuery({
+  const {
+    data: pokemon,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["pokemon", offset],
     queryFn: async (): Promise<RootObject> => fetchPokemonData(offset),
   });
@@ -25,17 +30,25 @@ const LandingPage = () => {
 
   return (
     <>
-      <div className="flex flex-wrap justify-center gap-4">
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            {names?.map((pokemon) => (
-              <Card key={pokemon.name} name={pokemon.name} url={pokemon.url} />
-            ))}
-          </>
-        )}
-      </div>
+      {isError ? (
+        <ErrorNotFound />
+      ) : (
+        <div className="flex flex-wrap justify-center gap-4">
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              {names?.map((pokemon) => (
+                <Card
+                  key={pokemon.name}
+                  name={pokemon.name}
+                  url={pokemon.url}
+                />
+              ))}
+            </>
+          )}
+        </div>
+      )}
       <div className="flex gap-3 justify-center p-3">
         <button
           disabled={offset === 0}
@@ -43,7 +56,12 @@ const LandingPage = () => {
         >
           Prev
         </button>
-        <button onClick={() => setOffset((prev) => prev + 20)}>Next</button>
+        <button
+          disabled={offset === 1020}
+          onClick={() => setOffset((prev) => prev + 20)}
+        >
+          Next
+        </button>
       </div>
     </>
   );

@@ -10,6 +10,7 @@ const usePokemonIdFetch = (ids: string | undefined) => {
   return useQuery({
     queryKey: ["pokemon-id", ids],
     queryFn: () => fetchPokemon(ids),
+    enabled: false,
   })
 };
 export default usePokemonIdFetch;
